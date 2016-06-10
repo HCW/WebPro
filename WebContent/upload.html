@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>选择上传的图片</title>
+
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  </head>
+  <body>
+    <form action="do_upload.jsp" method="post"
+      enctype="multipart/form-data" name="form1">
+      <table border="1" align="center" cellpadding="1" cellspacing="1">
+        <tr>
+          <td height="45" align="center" valign="middle">
+            请选择上传的图片
+            <input type="file" name="file" />
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <input type="submit" name="submit" value="上传" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
