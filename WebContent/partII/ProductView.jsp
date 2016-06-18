@@ -149,6 +149,13 @@ event.srcElement.style.color=""
                                 <th>产品描述：</th>
                                 <td><textarea name="content" class="common-textarea" id="dec" cols="30" style="width: 98%;" rows="10" readonly="true"><%=message.getDec() %></textarea></td>
                             </tr>
+                             <tr align="center">
+								<td height="101" align="center">
+								<div  id="localImag">
+								<img align="center" id="preview" src="<%=message.getImgPath()%>" width="150" height="180" style="display: block; width: 150px; height: 180px;">
+								</div>
+								</td>
+							</tr>
                             <tr>
                                 <th></th>
                                 <td>
@@ -164,7 +171,7 @@ event.srcElement.style.color=""
     <!--/main-->
 </div>
 </body>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function UpdateProduct(){
 
 	var Pid=$("#pid").val();
@@ -188,5 +195,5 @@ function UpdateProduct(){
 	}
 	
 }
-</script>
+</script> -->
 </html>

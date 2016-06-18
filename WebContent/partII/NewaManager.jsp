@@ -36,6 +36,7 @@ event.srcElement.style.color=""
     <title>后台管理</title>
     <link rel="stylesheet" type="text/css" href="../CSS/common.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/main.css"/>
+      <script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="../js/libs/modernizr.min.js"></script>
 </head>
 <body>
@@ -102,7 +103,7 @@ event.srcElement.style.color=""
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">新闻管理</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">新闻管理</span></div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
@@ -149,8 +150,8 @@ event.srcElement.style.color=""
                         	out.println("<td>"+newsl.getAuthor()+"</td>");
                         	out.println("<td>");
                         	out.println("<a class='link-update' href='*.jsp?id='"+newsl.getId()+"'>修改</a>");
-                        	out.println("<a class='link-update' href='*.jsp?id='"+newsl.getId()+"'>删除</a>");
-                        	out.println("<a class='link-update' href='*.jsp?id='"+newsl.getId()+"'>查看</a>");
+                        	out.println("<a class='link-update' onclick='DelNews("+newsl.getId()+")'>删除</a>");
+                        	out.println("<a class='link-update' href='NewsView.jsp?id="+newsl.getId()+"'>查看</a>");
                         	out.println("</td>");
                         	out.println("</tr>");
                         	Count++;
@@ -179,4 +180,24 @@ event.srcElement.style.color=""
     <!--/main-->
 </div>
 </body>
+<script type="text/javascript">
+function DelNews(ID)
+{
+	if (confirm("你确定要删除该新闻吗？")) {  
+		$.post("/NewEnterpriseProject/DoNewsDel",{"nid":ID},function(rst){
+			if(rst == "success"){
+				alert("删除成功！");
+				window.location.href= "/NewEnterpriseProject/partII/NewaManager.jsp";
+			}
+			else{
+				alert("删除失败！");
+			}
+		}); 
+    }  
+    else {  
+       // alert("点击了取消");  
+    }  
+
+}
+</script>
 </html>

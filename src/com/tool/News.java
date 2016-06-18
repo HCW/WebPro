@@ -6,12 +6,14 @@ public class News {
 	String content;
 	String id;
 	String submittime;
+	String img;
 	public News(){
 		title=null;
 		author=null;
 		content=null;
 		id=null;
 		submittime=null;
+		
 	}
 	public String getAuthor() {
 		return author;
@@ -43,5 +45,14 @@ public class News {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+	
+	public String getImg()
+	{
+		return img;
+	}
+	
+	public void setImg(String Img)
+	{
+		img=Img;
+	}
 }

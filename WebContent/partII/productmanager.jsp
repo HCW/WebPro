@@ -123,8 +123,8 @@ event.srcElement.style.color=""
                 <div class="result-title">
                     <div class="result-list">
                         <a href="AddProduct.jsp"><i class="icon-font"></i>添加产品</a>
-                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
-                        <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
+                        <a id="updateOrd" href="AddProductImg.jsp"><i class="icon-font"></i>添加产品图片</a>
+                        <!-- <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a> -->
                     </div>
                 </div>
                 <div class="result-content">

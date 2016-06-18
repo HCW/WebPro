@@ -63,7 +63,7 @@ public class SelectSQL {
 		NewsPage down=new NewsPage();
 		try{
 			Conndatabaseserver connsqlserver=new Conndatabaseserver();
-			String sql="select * from news order by nid";
+			String sql="select * from news order by nid desc";
 			System.out.println(sql);
 			//String sql="select * from (select top 20 * from (select top "+10*page+" * from tb_business order by id ASC)as aSysTable order by id desc) as bsystable order by id ASC";
 			//System.out.println(sql);
@@ -105,6 +105,7 @@ public class SelectSQL {
 				news1.setTitle(title);
 				news1.setContent(news);
 				news1.setAuthor(author);
+				news1.setImg(rs.getString(5));
 				ret.add(news1);		
 			}
 			connsqlserver.close();
@@ -145,20 +146,22 @@ public class SelectSQL {
 		return i;
 	}
 	
-	public int Insert(String title,String author,String news){
-		int i=0;
+	public boolean InsertNews(String title,String author,String content,String img){
+		
 		try{
 			Conndatabaseserver connsqlserver=new Conndatabaseserver();
-			String sql="insert into news(title,author,content) values('"+title+"','"+author+"','"+news+"')";
+			String sql="insert into news(title,author,content,img) values('"+title+"','"+author+"','"+content+"','"+img+"')";
 			System.out.println("insert sql:"+sql);
-			i=connsqlserver.executeUpdate(sql);
-			
-			connsqlserver.close();
+			if(connsqlserver.executeUpdate(sql)!=0)
+				return true;
+			else
+				return false;
+	
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
-		return i;
+		return false;
 	}
 	
 	public	Collection<adUser> selectadUser(){
@@ -257,6 +260,32 @@ public class SelectSQL {
 		return ret;	
 	}
 	
+	public	mbUser CheckMBLogin(String user,String pwd){
+		//NewsPage down=new NewsPage();
+		mbUser ret=new mbUser();
+		try{
+			Conndatabaseserver connsqlserver=new Conndatabaseserver();
+			String sql="SELECT * FROM member where mname='"+user+"' and mpwd='"+pwd+"'";
+			System.out.println(sql);
+			ResultSet rs=connsqlserver.executeQuery(sql);
+			//System.out.println(rs.next());		
+			if(rs.next())
+			{
+				ret.setID(rs.getString(1));
+				ret.setName(rs.getString(2));
+				ret.setPwd(rs.getString(3));
+				return ret;
+			}
+			else
+				return ret;
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return ret;	
+	}
+	
 	public	Collection<mbUser> selectmbUserIN(String id){
 		Collection<mbUser> ret=new ArrayList<mbUser>();
 		//NewsPage down=new NewsPage();
@@ -300,6 +329,7 @@ public class SelectSQL {
 				product.setDec(rs.getString(3));
 				product.setPrice(rs.getString(4));
 				product.setCount(rs.getString(5));
+				product.setImg(rs.getString(6));
 				ret.add(product);		
 			}
 		
@@ -314,7 +344,7 @@ public class SelectSQL {
 		//NewsPage down=new NewsPage();
 		try{
 			Conndatabaseserver connsqlserver=new Conndatabaseserver();
-			String sql="select tid,mname,content,date from tmessage t,member m where t.mid=m.mid";
+			String sql="select tid,mname,content,date from tmessage t,member m where t.mid=m.mid order by tid desc";
 			System.out.println(sql);
 			ResultSet rs=connsqlserver.executeQuery(sql);
 			//System.out.println(rs.next());		
@@ -415,7 +445,7 @@ public class SelectSQL {
 		int i=0;
 		try{
 			Conndatabaseserver connsqlserver=new Conndatabaseserver();
-			String sql="insert into tmessage(mid,content,date) values('"+id+"','"+date+"','"+content+"')";
+			String sql="insert into tmessage(mid,content,date) values('"+id+"','"+content+"','"+date+"')";
 			System.out.println("insert sql:"+sql);
 			i=connsqlserver.executeUpdate(sql);
 			if(i!=0)
@@ -464,6 +494,7 @@ public class SelectSQL {
 				message.setDec(rs.getString(3));
 				message.setPrice(rs.getString(4));
 				message.setCount(rs.getString(5));
+				message.setImg(rs.getString(6));
 				ret.add(message);		
 			}
 			connsqlserver.close();
@@ -481,6 +512,27 @@ public class SelectSQL {
 			Conndatabaseserver connsqlserver=new Conndatabaseserver();
 			//"UPDATE tmessage SET content = '"+content+"', date = '"+date+"' WHERE (tid = '"+id+"')";
 			String sql="UPDATE product SET pname ='"+name+"',pdec ='"+dec+"',pprice='"+price+"',pcount='"+count+"' where pid='"+id+"'";
+			System.out.println("update SQL:"+sql);
+			temp=connsqlserver.executeUpdate(sql);
+			if(temp!=0)
+				return true;
+			else
+				return false;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
+	
+	public  boolean UpdateProductImg(String id,String img)
+	{
+		int temp=0;
+		try{
+
+			Conndatabaseserver connsqlserver=new Conndatabaseserver();
+			//"UPDATE tmessage SET content = '"+content+"', date = '"+date+"' WHERE (tid = '"+id+"')";
+			String sql="UPDATE product SET img='"+img+"' where pid='"+id+"'";
 			System.out.println("update SQL:"+sql);
 			temp=connsqlserver.executeUpdate(sql);
 			if(temp!=0)
@@ -703,6 +755,23 @@ public class SelectSQL {
 		try{
 			Conndatabaseserver connsqlserver=new Conndatabaseserver();
 			String sql="delete from indent where id='"+id+"'";
+			System.out.println("delete SQL:"+sql);
+			i=connsqlserver.executeUpdate(sql);
+			System.out.println("i:"+i);
+			if(i!=0)
+				return true;
+			else
+				return false;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return true;
+	}
+	public boolean DelNews(String id){
+		int i=0;
+		try{
+			Conndatabaseserver connsqlserver=new Conndatabaseserver();
+			String sql="delete from news where nid='"+id+"'";
 			System.out.println("delete SQL:"+sql);
 			i=connsqlserver.executeUpdate(sql);
 			System.out.println("i:"+i);

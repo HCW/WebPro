@@ -98,22 +98,20 @@ event.srcElement.style.color=""
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.jsp">首页</a></div>
         </div>
         <div class="search-wrap">
-            <div class="search-content">
-                <form action="#" method="post">
+            <div class="search-content">         
                     <table class="search-tab">
                         <tr>
-                            <th width="70">关键字:</th>
-                            <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
-                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                            <th width="70" align="center"><img src="../Assets/upload/banner.jpg" class="photo" width="1300px" height="500px"/> </th>
+                           <!--  <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
+                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td> -->
                         </tr>
-                    </table>
-                </form>
+                    </table>              
             </div>
         </div>
-        <div class="result-wrap">
+        <!-- <div class="result-wrap">
             <form name="myform" id="myform" method="post">
                 <div class="result-content">
                 
@@ -122,7 +120,7 @@ event.srcElement.style.color=""
                     </div>
                 </div>
             </form>
-        </div>
+        </div> -->
     </div>
     <!--/main-->
 </div>

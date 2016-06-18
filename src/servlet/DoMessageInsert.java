@@ -39,11 +39,14 @@ public class DoMessageInsert extends HttpServlet {
 		String ID=request.getParameter("mid");
 		System.out.println("name:"+ID);
 		String Date=request.getParameter("date");
+		//String temp=new String(request.getParameter("date").getBytes("gb18030"),"ISO-8859-1");
 		System.out.println("date:"+Date);
+	//	System.out.println("temp:"+temp);
 		String Content=request.getParameter("content");
 		System.out.println("Content:"+Content);
 		//System.out.println("Content:"+Content);
 		SelectSQL sql=new SelectSQL();
+		 
 		if(sql.InsertMsg(ID, Date, Content))
 		{
 			response.getWriter().print("success");

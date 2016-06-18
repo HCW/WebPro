@@ -6,7 +6,18 @@ public class Product {
 	String pdec;
 	String pprice;
 	String pcount;
+	String img;
 	
+	public String getImgPath()
+	{
+		return img;
+	}
+	
+	public void setImg(String Img)
+	{
+		
+		img=Img;
+	}
 	public String getID()
 	{
 		return pid;

@@ -46,7 +46,7 @@ public class DoProductInsert extends HttpServlet {
 		//System.out.println("Content:"+Content);
 		//System.out.println("Content:"+Content);
 		SelectSQL sql=new SelectSQL();
-		if(sql.UpdateProduct(ID, Name, Dec, Price, Count))
+		if(sql.InsertProduct(ID, Name, Dec, Price, Count))
 		{
 			response.getWriter().print("success");
 		}
