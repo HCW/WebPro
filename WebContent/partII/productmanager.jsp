@@ -183,7 +183,7 @@ event.srcElement.style.color=""
 <script type="text/javascript">
 function DelPro(ID)
 {
-	if (confirm("你确定要删除该留言吗？")) {  
+	if (confirm("你确定要删除该产品吗？")) {  
 		$.post("/NewEnterpriseProject/DoProductDel",{"pid":ID},function(rst){
 			if(rst == "success"){
 				alert("删除成功！");

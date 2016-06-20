@@ -464,7 +464,7 @@ public class SelectSQL {
 		int i=0;
 		try{
 			Conndatabaseserver connsqlserver=new Conndatabaseserver();
-			String sql="insert into product values('"+id+"','"+name+"','"+dec+"','"+price+"','"+count+"')";
+			String sql="insert into product values('"+id+"','"+name+"','"+dec+"','"+price+"','"+count+"','')";
 			System.out.println("insert sql:"+sql);
 			i=connsqlserver.executeUpdate(sql);
 			if(i!=0)

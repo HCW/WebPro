@@ -220,6 +220,8 @@ body{
             });	
             </script> -->
     </div>
+  </div>
+    <div>
         <div class="space_hx">&nbsp;</div>
         <!--分页导航-->
           <div class="pclady_page">
@@ -229,8 +231,9 @@ body{
               <a target="_self" href="" class="viewAll">显示全部</a>
               <a target="_blank" href="">返回首页</a>
            </div>
-          <!--分页导航--> 
     </div>
+          <!--分页导航--> 
+   
 </div>
 <!--产品展示-->
 </div>

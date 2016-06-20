@@ -103,7 +103,7 @@ event.srcElement.style.color=""
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="index.jsp">首页</a href="NewaManager.jsp"><span class="crumb-step">&gt;</span><a></a><span class="crumb-name">新闻管理</span></a><span class="crumb-step">&gt;</span><span class="crumb-name">新闻查看</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.jsp">首页</a><a  href="NewaManager.jsp"><span class="crumb-step">&gt;</span><span class="crumb-name">新闻管理</span></a><span class="crumb-step">&gt;</span><span class="crumb-name">新闻查看</span></div>
         </div>
          <%
 						String id = request.getParameter("id");
